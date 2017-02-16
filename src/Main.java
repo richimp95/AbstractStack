@@ -16,8 +16,9 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		int n=0;
 		Scanner teclado = new Scanner(System.in);
-		Calculadora calcular= new Calculadora();
+		Calculadora calcular= new Calculadora(n);
 		System.out.println("Ingrese la direccion del archivo(.txt)");//ingresar direccion del archivo
 		String direccion =teclado.nextLine();
 		try {

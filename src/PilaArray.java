@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 
-public class PilaArray implements IPila<String>{
+public class PilaArray extends APila{
 	
 	private ArrayList<String> arreglo; 
 

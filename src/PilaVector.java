@@ -1,6 +1,6 @@
 import java.util.Vector;
 
-public class PilaVector implements IPila<String>{
+public class PilaVector extends APila{
 	
 	private Vector<String> vector;
 

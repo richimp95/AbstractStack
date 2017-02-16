@@ -1,10 +1,12 @@
 
 public class Calculadora implements ICalculadora<Integer>{
 
-	private PilaArray stack;
-	
-	public Calculadora(){
-		stack= new PilaArray();
+	private IPila<String> stack;
+
+	public Calculadora(int n){
+		//n decide que tipo de pila utilizar
+		FactoryPila pila=new FactoryPila(); //Se le pide al Factory que elija el tipo de pila
+		stack=pila.getPila(n);
 	}
 
 	@Override
@@ -42,25 +44,25 @@ public class Calculadora implements ICalculadora<Integer>{
 			}else if(operandos.indexOf(postfix.charAt(i))>=0){//si es operador
 				switch(postfix.charAt(i)){
 				case '+':{//suma
-						resultado=suma(Double.parseDouble(stack.pop()),Double.parseDouble(stack.pop()));
+						resultado=suma(Double.parseDouble(stack.pop()+""),Double.parseDouble(stack.pop()+""));
 						stack.push(resultado+"");//ingresa resultado al stack
 					break;
 				}
 				case '-':{//resta
-						double b=Double.parseDouble(stack.pop());
-						double a=Double.parseDouble(stack.pop());
+						double b=Double.parseDouble(stack.pop()+"");
+						double a=Double.parseDouble(stack.pop()+"");
 						resultado=resta(a,b);
 						stack.push(resultado+"");//ingresa resultado al stack
 					break;
 				}
 				case '*':{//multiplicacion
-						resultado=multiplicacion(Double.parseDouble(stack.pop()),Double.parseDouble(stack.pop()));
+						resultado=multiplicacion(Double.parseDouble(stack.pop()+""),Double.parseDouble(stack.pop()+""));
 						stack.push(resultado+"");//ingresa resultado al stack
 					break;
 				}
 				case '/':{//division
-						double b=Double.parseDouble(stack.pop());
-						double a=Double.parseDouble(stack.pop());
+						double b=Double.parseDouble(stack.pop()+"");
+						double a=Double.parseDouble(stack.pop()+"");
 						resultado=division(a,b);
 						stack.push(resultado+"");//ingresa resultado al stack
 					break;

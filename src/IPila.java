@@ -12,7 +12,6 @@ public interface IPila<E>{
    
    public boolean isEmpty();
    // post: returns true if and only if the stack is empty
-   
 
 
 }
