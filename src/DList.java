@@ -1,16 +1,25 @@
 
-public class DList extends ALista  {
+public class DList<E> extends ALista<E>  {
+	protected DoublyLinkedNode<E> head;
+	protected DoublyLinkedNode<E> tail;
 
-	@Override
-	public void add(int index, String obj) {
-		// TODO Auto-generated method stub
-		
+	public DList()
+	// post: constructs an empty list
+	{
+	   head = null;
+	   tail = null;
+	   count = 0;
 	}
-
-	@Override
-	public String getFirst() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public void add(E value)
+	// pre: value is not null
+	// post: adds element to head of list
+	{
+	   // construct a new element, making it head
+	   head = new DoublyLinkedNode<E>(value, head, null);
+	   // fix tail, if necessary
+	   if (tail == null) tail = head;
+	   count++;
 	}
-
+	
 }

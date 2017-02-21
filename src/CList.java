@@ -1,16 +1,20 @@
 
-public class CList extends ALista  {
+public class CList <E> extends ALista<E>{
 
 	@Override
-	public void add(int index, String obj) {
-		// TODO Auto-generated method stub
-		
+	public void add(E value) 
+	// pre: value non-null
+	// post: adds element to head of list
+	{
+	   Node<E> temp = new Node<E>(value);
+	   if (tail == null) { // first value added
+	       tail = temp;
+	       tail.setNext(tail);
+	   } else { // element exists in list
+	       temp.setNext(tail.next());
+	       tail.setNext(temp);
+	   }
+	   count++;
 	}
-
-	@Override
-	public String getFirst() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
+

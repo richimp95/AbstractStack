@@ -1,53 +1,35 @@
 
-public abstract class ALista implements ILista<String>{
-		protected String dato;
-		protected ILista<String> siguiente;
-		protected ILista<String> primero;
-		
-		public void ILista(){
-		        siguiente=null;
-		}
-		
-		public void ILista(String p){
-	        siguiente=null;
-	        dato = p;
-	    }
-		
-		public boolean estaVacia(){
-	        return primero == null;
-	    }
-		
-		public void ILista(String t, ILista<String> siguiente){
-	        this.siguiente=siguiente;
-	        dato = t;
-	    }
-		
-		public ILista<String> getSiguiente() {
-	        return siguiente;
-	    }
-		
-		public void setSiguiente(ILista<String> siguiente) {
-	        this.siguiente = siguiente;
-	    }
-		
-		public String getDato() {
-	        return dato;
-	    }
-		
-		public int cuantosElementos(){
-			ILista<String> aux;
-	        int numElementos=0;
-	        aux = primero;
-	 
-	        //Recorremos
-	        while(aux != null){
-	            numElementos++;
-	            aux = aux.getSiguiente();
-	        }
-	        return numElementos;
-	 
-	    }
-		
+public abstract class ALista<E> implements ILista<E>{
+	protected int count;
+	protected Node<E> head; // ref. to first element
+	protected Node<E> tail; 
+	
+	public ALista()
+	   // post: does nothing
+	   {
+			tail = null;
+			count = 0;
+			head =null;
+	   }
+	public int size()
+	   // post: returns number of elements in list
+	  {
+	    return count;
+	  }
+	public E getFirst() {
+			// TODO Auto-generated method stub
+			E aux= head.value();
+			return aux;
+	}
+	public E removeFirst()  
+	// pre: list is not empty
+	// post: removes and returns value from beginning of list
+	{
+	     Node<E> temp = head;
+	     head = head.next(); // move head down list
+	     count--;
+	     return temp.value();
+	}
 		
 		
 }
