@@ -1,7 +1,6 @@
 
 public class FactoryLista{
 	public ILista<String> getLista(int n){
-		//Dependiendo del n se devolverá la lista seleccionada
 		if(n==1)
 			return new DList<String>();
 		else if(n==2)

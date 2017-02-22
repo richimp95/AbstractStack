@@ -16,8 +16,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int n=0;
-		int p=0;
+		int n=0;//decide el stack a utilizar
 		Scanner teclado = new Scanner(System.in);
 		Calculadora calcular= new Calculadora(n);
 		System.out.println("Ingrese la direccion del archivo(.txt)");//ingresar direccion del archivo
@@ -29,7 +28,7 @@ public class Main {
 				System.out.println("exprecion encontrada:");
 				System.out.println(exprecion);//mostrar linea encontrada
 				System.out.println("Resultado:");
-				System.out.println(calcular.operar(exprecion, p));//mostrar resultado
+				System.out.println(calcular.operar(exprecion));//mostrar resultado
 				archivo.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block

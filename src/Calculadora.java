@@ -2,14 +2,11 @@
 public class Calculadora implements ICalculadora<Integer>{
 
 	private IPila<String> stack;
-	private ILista<String> list;
 
 	public Calculadora(int n){
 		//n decide que tipo de pila utilizar
 		FactoryPila pila=new FactoryPila(); //Se le pide al Factory que elija el tipo de pila
 		stack=pila.getPila(n);
-		FactoryLista lista=new FactoryLista();
-		list=lista.getLista(n);
 	}
 
 	@Override
@@ -37,46 +34,44 @@ public class Calculadora implements ICalculadora<Integer>{
 	}
 
 	
-	public double operar(String postfix, int p){
+	public double operar(String postfix){
 		String numeros="0123456789";
 		String operandos="+-*/";
 		double resultado=0;
-		if(p==0){
-			for(int i=0;i<postfix.length();i++){//recorre toda la exprecion analizando cada char
-				if(numeros.indexOf(postfix.charAt(i))>=0){//si es numero
-					stack.push(postfix.charAt(i)+"");
-				}else if(operandos.indexOf(postfix.charAt(i))>=0){//si es operador
-					switch(postfix.charAt(i)){
-					case '+':{//suma
-							resultado=suma(Double.parseDouble(stack.pop()+""),Double.parseDouble(stack.pop()+""));
-							stack.push(resultado+"");//ingresa resultado al stack
-						break;
-					}
-					case '-':{//resta
-							double b=Double.parseDouble(stack.pop()+"");
-							double a=Double.parseDouble(stack.pop()+"");
-							resultado=resta(a,b);
-							stack.push(resultado+"");//ingresa resultado al stack
-						break;
-					}
-					case '*':{//multiplicacion
-							resultado=multiplicacion(Double.parseDouble(stack.pop()+""),Double.parseDouble(stack.pop()+""));
-							stack.push(resultado+"");//ingresa resultado al stack
-						break;
-					}
-					case '/':{//division
-							double b=Double.parseDouble(stack.pop()+"");
-							double a=Double.parseDouble(stack.pop()+"");
-							resultado=division(a,b);
-							stack.push(resultado+"");//ingresa resultado al stack
-						break;
-					}
-					}
+	
+		for(int i=0;i<postfix.length();i++){//recorre toda la exprecion analizando cada char
+			if(numeros.indexOf(postfix.charAt(i))>=0){//si es numero
+				stack.push(postfix.charAt(i)+"");
+			}else if(operandos.indexOf(postfix.charAt(i))>=0){//si es operador
+				switch(postfix.charAt(i)){
+				case '+':{//suma
+						resultado=suma(Double.parseDouble(stack.pop()+""),Double.parseDouble(stack.pop()+""));
+						stack.push(resultado+"");//ingresa resultado al stack
+					break;
+				}
+				case '-':{//resta
+						double b=Double.parseDouble(stack.pop()+"");
+						double a=Double.parseDouble(stack.pop()+"");
+						resultado=resta(a,b);
+						stack.push(resultado+"");//ingresa resultado al stack
+					break;
+				}
+				case '*':{//multiplicacion
+						resultado=multiplicacion(Double.parseDouble(stack.pop()+""),Double.parseDouble(stack.pop()+""));
+						stack.push(resultado+"");//ingresa resultado al stack
+					break;
+				}
+				case '/':{//division
+						double b=Double.parseDouble(stack.pop()+"");
+						double a=Double.parseDouble(stack.pop()+"");
+						resultado=division(a,b);
+						stack.push(resultado+"");//ingresa resultado al stack
+					break;
+				}
 				}
 			}
-		}else{
-			
 		}
+		
 		return resultado;//resultado final
 		
 	}
