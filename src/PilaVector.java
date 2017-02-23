@@ -19,7 +19,9 @@ public class PilaVector extends APila{
 	@Override
 	public String pop() {//saca un elemento
 		// TODO Auto-generated method stub
-		return vector.get(vector.size()-1);
+		String last = vector.get(vector.size()-1);
+		vector.remove(vector.size()-1);
+		return last;
 	}
 
 	@Override

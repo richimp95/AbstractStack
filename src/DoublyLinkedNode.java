@@ -22,4 +22,19 @@ public class DoublyLinkedNode <E> {
 	{
 	    this(v,null,null);
 	}
+	
+	public E value(){
+		return data;
+	}
+	
+	   public void setNext(DoublyLinkedNode<E> next)
+	   // post: sets reference to new next value
+	   {
+	      nextElement = next;
+	   }
+	   
+	public DoublyLinkedNode<E> previous(){
+		return previousElement;
+	}
+	
 }

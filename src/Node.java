@@ -1,7 +1,8 @@
 public class Node<E>
 {
    protected E data; // value stored in this element
-   protected Node<E> nextElement; // ref to next
+	private Node<E> primero;
+	private Node<E> siguiente;
 
    public Node(E v, Node<E> next)
    // pre: v is a value, next is a reference to 
@@ -10,7 +11,7 @@ public class Node<E>
    //      head of list
    {
        data = v;
-       nextElement = next;
+       siguiente = next;
    }
 
    public Node(E v)
@@ -19,27 +20,21 @@ public class Node<E>
       this(v,null);
    }
 
+   
    public Node<E> next()
    // post: returns reference to next value in list
    {
-      return nextElement;
+      return siguiente;
    }
 
    public void setNext(Node<E> next)
    // post: sets reference to new next value
    {
-      nextElement = next;
+      siguiente = next;
    }
 
-   public E value()
-   // post: returns value associated with this element
-   {
-      return data;
-   }
-
-   public void setValue(E value)
-   // post: sets value associated with this element
-   {
-      data = value;
+   
+   public E value() {
+       return data;
    }
 }

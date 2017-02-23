@@ -1,5 +1,6 @@
 
 public class FactoryLista{
+	
 	public ILista<String> getLista(int n){
 		if(n==1)
 			return new DList<String>();
